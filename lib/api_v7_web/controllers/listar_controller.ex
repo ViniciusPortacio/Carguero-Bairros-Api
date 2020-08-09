@@ -1,6 +1,7 @@
 defmodule ApiV7Web.ListarController do
   use ApiV7Web, :controller
 
+  alias ApiV7Web.ListarView
   alias ApiV7.Models.ListarBairrosFaixaCep
   import Ecto.Changeset
   alias ApiV7.Schema.BairrosFaixaCep
@@ -18,5 +19,6 @@ defmodule ApiV7Web.ListarController do
     |> cast(params, [:CodigoBairro, :CepInicial, :CepFinal])
     |> BairrosFaixaCep.changeset(params)
     |> Repo.insert()
+    |> render(ListarView, "index.json", params: params)
   end
 end
