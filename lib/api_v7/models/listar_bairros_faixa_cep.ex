@@ -12,12 +12,6 @@ defmodule ApiV7.Models.ListarBairrosFaixaCep do
     Repo.all(query)
   end
 
-  def cadastrar(params) do
-    %BairrosFaixaCep{}
-    |> cast(params, [:CodigoBairro, :CepInicial, :CepFinal])
-    |> BairrosFaixaCep.changeset(params)
-    |> Repo.insert()
-  end
 end
 
 # ApiV7.Models.ListarBairrosFaixaCep.cadastrar %{CodigoBairro: 12, CepInicial: "12313322", CepFinal: "12312322"}
