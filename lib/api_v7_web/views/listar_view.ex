@@ -3,16 +3,19 @@ defmodule ApiV7Web.ListarView do
 
   alias ApiV7Web.ListarView
 
-  def render("index.json", %{bairros: bairros}) do
-    %{data: render_many(bairros, ListarView, "index.json")}
+  def render("index.json", %{bairrosfaixacep: bairros}) do
+    %{data: render_many(bairros, ListarView, "base.json")}
   end
 
-  def render("index.json", %{listar: bairros}) do
+  def render("base.json", %{listar: bairros}) do
     %{
       CodigoBairro: bairros."CodigoBairro",
-      SiglaUf: bairros."SiglaUf",
-      CodigoLocalidade: bairros."CodigoLocalidade",
-      # Nome: bairros."Nome"
+      CepInicial: bairros."CepInicial",
+      CepFinal: bairros."CepFinal"
     }
   end
+
+
+
+
 end

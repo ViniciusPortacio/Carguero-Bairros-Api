@@ -1,22 +1,21 @@
-defmodule ApiV7.Schema.Bairros do
+defmodule ApiV7.Schema.BairrosFaixaCep do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @primary_key{:CodigoBairro, :id, autocomplete: true}
+  @primary_key{:CodigoBairro, :integer, autocomplete: true}
 
-  schema "Bairros" do
-    field :SiglaUf, :string
-    field :CodigoLocalidade, :integer
-    # field :Nome, :binary
+  schema "BairrosFaixaCep" do
+    field :CepInicial, :string
+    field :CepFinal, :string
+
   end
 
-  def changeset(appUsuario, attrs) do
-    appUsuario
+  def changeset(bairrosfaixacep, attrs \\ %{}) do
+    bairrosfaixacep
     |> cast(attrs, [
-      :CogidoBairro,
-      :SiglaUf,
-      :CodigoLocalidade,
-      # :Nome
+      :CodigoBairro,
+      :CepInicial,
+      :CepFinal
     ])
   end
 end

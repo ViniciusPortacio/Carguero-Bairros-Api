@@ -9,6 +9,7 @@ defmodule ApiV7Web.Router do
     pipe_through :api
 
     get "/index", ListarController, :index
+    post "/cadastrar", ListarController, :cadastrar
   end
 
   # Enables LiveDashboard only for development

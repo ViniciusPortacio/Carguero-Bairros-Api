@@ -1,12 +1,14 @@
 defmodule ApiV7Web.ListarController do
   use ApiV7Web, :controller
 
-  alias ApiV7.Schema.Bairros
-  alias ApiV7.Models.ListarBairros
+  alias ApiV7.Models.ListarBairrosFaixaCep
 
   def index(conn, _params) do
-    bairros = ListarBairros.listar()
-    # IO.inspect bairros
-    render(conn, "index.json", bairros: bairros)
+    bairros = ListarBairrosFaixaCep.listar()
+    render(conn, "index.json", BairrosFaixaCep: bairros)
+  end
+
+  def cadastrar do
+
   end
 end
