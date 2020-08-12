@@ -10,15 +10,22 @@ defmodule ApiV7Web.ListarController do
 
   def index(conn, _params) do
     bairros = ListarBairrosFaixaCep.listar()
-    render(conn, "index.json", BairrosFaixaCep: bairros)
+    render(conn, "index.json", bairros: bairros)
   end
 
+
   def cadastrar(conn, params) do
-    IO.inspect(params)
-    %BairrosFaixaCep{}
-    |> cast(params, [:CodigoBairro, :CepInicial, :CepFinal])
-    |> BairrosFaixaCep.changeset(params)
-    |> Repo.insert()
-    |> render(ListarView, "index.json", params: params)
+    # {:ok, params} ->
+    # bairro = ListarBairrosFaixaCep.cadastrar(params)
+    # render(conn, "show.json", bairro: bairro)
+
+
+    case ListarBairrosFaixaCep.cadastrar(params) do
+      {:ok, params} ->
+        conn
+        |> put_status(200)
+        |> render(ApiV7Web.ListarView, "show.json",%{params: params})
+    end
   end
+
 end

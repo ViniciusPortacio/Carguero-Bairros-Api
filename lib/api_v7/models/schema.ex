@@ -2,9 +2,10 @@ defmodule ApiV7.Schema.BairrosFaixaCep do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @primary_key{:CodigoBairro, :integer, autocomplete: true}
+  @primary_key{:id, :id, autocomplete: true}
 
   schema "BairrosFaixaCep" do
+    field :CodigoBairro, :integer
     field :CepInicial, :string
     field :CepFinal, :string
 
