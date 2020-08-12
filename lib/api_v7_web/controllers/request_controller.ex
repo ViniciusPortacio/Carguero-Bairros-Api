@@ -1,15 +1,10 @@
-defmodule ApiV7Web.ListarController do
+defmodule ApiV7Web.RequestController do
   use ApiV7Web, :controller
 
-  alias ApiV7Web.ListarView
-  alias ApiV7.Models.ListarBairrosFaixaCep
-  import Ecto.Changeset
-  alias ApiV7.Schema.BairrosFaixaCep
-  alias ApiV7.Repo
-
+  alias ApiV7.Models.Request
 
   def index(conn, _params) do
-    bairros = ListarBairrosFaixaCep.listar()
+    bairros = Request.listar()
     render(conn, "index.json", bairros: bairros)
   end
 
@@ -20,11 +15,11 @@ defmodule ApiV7Web.ListarController do
     # render(conn, "show.json", bairro: bairro)
 
 
-    case ListarBairrosFaixaCep.cadastrar(params) do
+    case Request.cadastrar(params) do
       {:ok, params} ->
         conn
         |> put_status(200)
-        |> render(ApiV7Web.ListarView, "show.json",%{params: params})
+        |> render(ApiV7Web.RequestView, "show.json",%{params: params})
     end
   end
 

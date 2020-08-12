@@ -1,4 +1,4 @@
-defmodule ApiV7.Models.ListarBairrosFaixaCep do
+defmodule ApiV7.Models.Request do
   use ApiV7Web, :controller
 
   alias ApiV7.Schema.BairrosFaixaCep
