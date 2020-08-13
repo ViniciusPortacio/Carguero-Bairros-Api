@@ -11,12 +11,19 @@ defmodule ApiV7.Models.Request do
     Repo.all(query)
   end
 
+  @spec cadastrar(:invalid | %{optional(:__struct__) => none, optional(atom | binary) => any}) ::
+          any
   def cadastrar(attrs \\ %{}) do
     # IO.inspect(params)
     %BairrosFaixaCep{}
     |> BairrosFaixaCep.changeset(attrs)
     |> Repo.insert()
   end
-end
 
-# ApiV7.Models.ListarBairrosFaixaCep.cadastrar %{CodigoBairro: 12, CepInicial: "12313322", CepFinal: "12312322"}
+  def busca(id), do: Repo.get(BairrosFaixaCep, id)
+  # def get_user(id), do: Repo.get(User, id)
+
+  # def busca do
+  #   Repo.get!(BairrosFaixaCep, id)
+  # end
+end

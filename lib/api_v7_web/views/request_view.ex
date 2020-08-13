@@ -11,6 +11,10 @@ defmodule ApiV7Web.RequestView do
     %{data: render_one(params, RequestView, "base.json")}
   end
 
+  def render("busca.json", %{busca: busca}) do
+    %{data: render_one(busca, RequestView, "base.json")}
+  end
+
   def render("base.json", %{request: bairro}) do
     %{
       CodigoBairro: bairro."CodigoBairro",

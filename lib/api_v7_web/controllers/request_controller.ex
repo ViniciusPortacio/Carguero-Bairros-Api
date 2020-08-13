@@ -2,6 +2,7 @@ defmodule ApiV7Web.RequestController do
   use ApiV7Web, :controller
 
   alias ApiV7.Models.Request
+  alias ApiV7.Schema.BairrosFaixaCep
 
   def index(conn, _params) do
     bairros = Request.listar()
@@ -10,11 +11,6 @@ defmodule ApiV7Web.RequestController do
 
 
   def cadastrar(conn, params) do
-    # {:ok, params} ->
-    # bairro = ListarBairrosFaixaCep.cadastrar(params)
-    # render(conn, "show.json", bairro: bairro)
-
-
     case Request.cadastrar(params) do
       {:ok, params} ->
         conn
@@ -23,4 +19,14 @@ defmodule ApiV7Web.RequestController do
     end
   end
 
+  # def buscar(conn, %{"CodigoBairro" => codigobairro}) do
+  #   with busca = %BairrosFaixaCep{} <- Request.buscar(codigobairro) do
+  #     render(conn, "busca.json",  busca: busca)
+  #   end
+
+    def buscar(conn, %{"id" => id}) do
+      with busca = %BairrosFaixaCep{} <- Request.busca(id) do
+        render(conn, "busca.json", busca: busca)
+      end
+    end
 end

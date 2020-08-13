@@ -10,6 +10,7 @@ defmodule ApiV7Web.Router do
 
     get "/index", RequestController, :index
     post "/cadastrar", RequestController, :cadastrar
+    post "/buscar/:id", RequestController, :buscar
   end
 
   if Mix.env() in [:dev, :test] do
